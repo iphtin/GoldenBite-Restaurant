@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://goldenbite-restaurant-backend.onrender.com";
 
 export const getItems = async (endpointUrl) => {
   try {

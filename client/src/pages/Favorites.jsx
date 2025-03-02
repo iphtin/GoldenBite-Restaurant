@@ -33,13 +33,13 @@ const Favorites = () => {
   }
 
   return (
-    <div className="p-4 md:p-8 bg-gray-100 min-h-screen">
+    <div className="p-4 md:p-8 bg-gray-100 min-h-screen lg:lg:w-[1020px] m-auto">
       <h1 className="text-xl font-bold mb-6 ml-6">Your Favorites</h1>
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-5">
         {favorites.map((item) => (
           <div
             key={item._id}
-            className="bg-white rounded-lg p-2 shadow-lg overflow-hidden w-[180px]"
+            className="bg-white rounded-lg p-2 shadow-lg overflow-hidden"
           >
             <img
               src={item.image}

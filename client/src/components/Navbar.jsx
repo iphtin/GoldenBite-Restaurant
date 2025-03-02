@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import {
   FaSignOutAlt,
@@ -11,12 +11,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = ({ setShoppingCart, shoppingCart }) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [favoriteItems, setFavoriteItems] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const favoriteItems = JSON.parse(localStorage.getItem("favorites")) || [];
   const customer = JSON.parse(localStorage.getItem("user")) || {};
+
+  useEffect(() => {
+    const favoriteItems = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavoriteItems(favoriteItems);
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);

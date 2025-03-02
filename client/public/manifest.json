@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GoldenBite",
+  "name": "GoldenBite - Food Delivery App",
+  "description": "Order delicious food from your favorite restaurants with GoldenBite.",
   "icons": [
     {
       "src": "favicon.ico",

@@ -73,7 +73,7 @@ const Card = ({ item }) => {
 
   return (
     <div
-      className="bg-white rounded-lg shadow-lg overflow-hidden w-[180px] cursor-pointer"
+      className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
       onClick={() => navigate(`/details/${item._id}`, { state: { item } })}
     >
       {/* Image */}

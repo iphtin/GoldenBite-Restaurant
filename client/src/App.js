@@ -25,8 +25,6 @@ import OrderTracking from "./pages/OrderTracking";
 function App() {
   const isAuthenticated = Boolean(localStorage.getItem("token"));
   const user = JSON.parse(localStorage.getItem("user"));
-  // const isAuthenticated = false;
-  console.log(isAuthenticated);
   return (
     <Router>
       {isAuthenticated ? (

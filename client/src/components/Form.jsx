@@ -50,7 +50,7 @@ const Form = ({ Signup }) => {
   console.log("Signup mode:", Signup);
 
   return (
-    <div className="max-w-md mx-auto">
+    <div className="max-w-md mx-auto w-full">
       {!Signup && (
         <h2 className="text-2xl mt-[20%] font-bold text-center mb-6">Log In</h2>
       )}

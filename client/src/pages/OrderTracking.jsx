@@ -11,7 +11,7 @@ const OrderTracking = () => {
     // Fetch order data from API
     const fetchTrackingOrder = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/orders/${id}`);
+        const response = await fetch(`https://goldenbite-restaurant-backend.onrender.com/orders/${id}`);
         if (response.ok) {
           const data = await response.json();
           setOrder(data);

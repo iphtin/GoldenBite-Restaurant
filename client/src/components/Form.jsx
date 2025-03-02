@@ -20,8 +20,8 @@ const Form = ({ Signup }) => {
     // API call to login/sign up the user
     try {
       const url = Signup
-        ? "http://localhost:3001/auth/signup" // Endpoint for Sign Up
-        : "http://localhost:3001/auth/signin"; // Endpoint for Login
+        ? "https://goldenbite-restaurant-backend.onrender.com/auth/signup" // Endpoint for Sign Up
+        : "https://goldenbite-restaurant-backend.onrender.com/auth/signin"; // Endpoint for Login
 
       const response = await fetch(url, {
         method: "POST",

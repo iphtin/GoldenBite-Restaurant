@@ -10,7 +10,7 @@ const Profile = () => {
     email: customer?.email || "",
     profileImage: customer?.profileImage || "",
     deliveryAddress: {
-      phone: customer?.deliveryAddress.phone || "07",
+      phone: customer?.phoneNumber || "07",
       city: customer?.deliveryAddress.city,
       state: customer?.deliveryAddress.state || "",
       country: customer?.deliveryAddress.country,

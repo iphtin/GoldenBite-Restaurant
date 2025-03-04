@@ -37,7 +37,11 @@ const Home = () => {
   return (
     <div className="bg-[#f8f9f9] w-[100%] min-h-screen">
       <Navbar setShoppingCart={setShoppingCart} shoppingCart={shoppingCart} />
-      <div className="flex flex-col md:flex-row p-4 md:p-6 lg:w-[1020px] m-auto">
+      <div
+        className={`flex flex-col md:flex-row p-4 md:p-6 ${
+          shoppingCart ? "lg:w-[1020px]" : ""
+        }  m-auto`}
+      >
         {/* Main Content */}
         <div className="flex-1 md:w-3/4 p-2 md:p-4">
           {/* Discount Section */}
@@ -77,7 +81,15 @@ const Home = () => {
         </div>
 
         {/* Cart Section */}
-        {!shoppingCart && <CartSection />}
+        {!shoppingCart && (
+          <div>
+            {" "}
+            <CartSection
+              setShoppingCart={setShoppingCart}
+              shoppingCart={shoppingCart}
+            />{" "}
+          </div>
+        )}
       </div>
     </div>
   );

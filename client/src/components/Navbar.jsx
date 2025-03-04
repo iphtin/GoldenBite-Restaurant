@@ -161,7 +161,7 @@ const Navbar = ({ setShoppingCart, shoppingCart }) => {
 
       {/* Dropdown Menu */}
       {isDropdownOpen && (
-        <div className="absolute right-6 mt-2 w-48 bg-white shadow-lg rounded-lg border">
+        <div className="absolute z-10 right-6 mt-2 w-48 bg-white shadow-lg rounded-lg border">
           <button
             className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100"
             onClick={handleUpdateProfile}

@@ -42,7 +42,7 @@ const Login = () => {
       </div>
       <div className="w-full bg-white h-full">
         <div className="flex justify-center mt-[10%] p-4">
-          <Form Signup={false} />
+          <Form Auth="login" />
         </div>
       </div>
     </div>

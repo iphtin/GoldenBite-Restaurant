@@ -25,6 +25,10 @@ import OrderTracking from "./pages/OrderTracking";
 function App() {
   const isAuthenticated = Boolean(localStorage.getItem("token"));
   const user = JSON.parse(localStorage.getItem("user"));
+
+  // useEffect(() => {
+  //   window.location.reload();
+  // }, [isAuthenticated]);
   return (
     <Router>
       {isAuthenticated ? (
@@ -62,9 +66,11 @@ function App() {
         )
       ) : (
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/register" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       )}
     </Router>

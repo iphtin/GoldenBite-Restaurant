@@ -16,7 +16,7 @@ const Navbar = ({ setShoppingCart, shoppingCart }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const customer = JSON.parse(localStorage.getItem("user")) || {};
+  const customer = JSON.parse(localStorage.getItem("user")) || null; // Check if customer exists
 
   useEffect(() => {
     const favoriteItems = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -33,6 +33,14 @@ const Navbar = ({ setShoppingCart, shoppingCart }) => {
 
   const handleCart = () => {
     setShoppingCart(!shoppingCart);
+  };
+
+  const handleSignIn = () => {
+    navigate("/login");
+  };
+
+  const handleSignUp = () => {
+    navigate("/register");
   };
 
   return (
@@ -77,27 +85,45 @@ const Navbar = ({ setShoppingCart, shoppingCart }) => {
           </NavLink>
 
           {/* Shopping Cart */}
-          <div className="relative hidden md:block">
-            <FaShoppingCart
-              onClick={handleCart}
-              className="text-2xl text-gray-700 hover:text-gray-900 cursor-pointer"
-              aria-label="Cart"
-            />
-            <span className="bg-red-500 absolute -top-1 -right-1 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-              {cartItems.length}
-            </span>
-          </div>
+          {customer ? (
+            <div className="relative hidden md:block">
+              <FaShoppingCart
+                onClick={handleCart}
+                className="text-2xl text-gray-700 hover:text-gray-900 cursor-pointer"
+                aria-label="Cart"
+              />
+              <span className="bg-red-500 absolute -top-1 -right-1 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {cartItems.length}
+              </span>
+            </div>
+          ) : (
+            <button
+              onClick={handleSignIn}
+              className="hidden md:block text-gray-700 hover:text-gray-900"
+            >
+              Sign In
+            </button>
+          )}
 
-          {/* Profile Image */}
-          <img
-            src={
-              customer.profileImage ||
-              "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg"
-            }
-            alt="Profile"
-            className="w-10 h-10 rounded-full cursor-pointer hidden md:block"
-            onClick={toggleDropdown}
-          />
+          {/* Profile Image or Sign Up */}
+          {customer ? (
+            <img
+              src={
+                customer.profileImage ||
+                "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg"
+              }
+              alt="Profile"
+              className="w-10 h-10 rounded-full cursor-pointer hidden md:block"
+              onClick={toggleDropdown}
+            />
+          ) : (
+            <button
+              onClick={handleSignUp}
+              className="hidden md:block text-gray-700 hover:text-gray-900"
+            >
+              Sign Up
+            </button>
+          )}
         </div>
       </div>
 
@@ -129,32 +155,50 @@ const Navbar = ({ setShoppingCart, shoppingCart }) => {
               <span>Favorites</span>
             </NavLink>
 
-            <button
-              onClick={handleCart}
-              className="relative flex items-center space-x-2"
-            >
-              <FaShoppingCart className="text-2xl text-gray-700" />
-              <span className="bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                {cartItems.length}
-              </span>
-              <span>Cart</span>
-            </button>
+            {customer ? (
+              <button
+                onClick={handleCart}
+                className="relative flex items-center space-x-2"
+              >
+                <FaShoppingCart className="text-2xl text-gray-700" />
+                <span className="bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {cartItems.length}
+                </span>
+                <span>Cart</span>
+              </button>
+            ) : (
+              <button
+                onClick={handleSignIn}
+                className="text-gray-700 hover:text-gray-900"
+              >
+                Sign In
+              </button>
+            )}
 
-            {/* Profile */}
-            <div
-              className="flex items-center space-x-2 cursor-pointer"
-              onClick={toggleDropdown}
-            >
-              <img
-                src={
-                  customer.profileImage ||
-                  "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg"
-                }
-                alt="Profile"
-                className="w-8 h-8 rounded-full"
-              />
-              <span>{customer.name || "Profile"}</span>
-            </div>
+            {/* Profile or Sign Up */}
+            {customer ? (
+              <div
+                className="flex items-center space-x-2 cursor-pointer"
+                onClick={toggleDropdown}
+              >
+                <img
+                  src={
+                    customer.profileImage ||
+                    "https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg"
+                  }
+                  alt="Profile"
+                  className="w-8 h-8 rounded-full"
+                />
+                <span>{customer.name || "Profile"}</span>
+              </div>
+            ) : (
+              <button
+                onClick={handleSignUp}
+                className="text-gray-700 hover:text-gray-900"
+              >
+                Sign Up
+              </button>
+            )}
           </div>
         </div>
       )}
